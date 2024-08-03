@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Center(
         child: Container(
-          margin: EdgeInsets.all(20.0),
+          margin: const EdgeInsets.all(20.0),
           child: Form(
             key: keyForm,
             child: formUI(),
@@ -41,34 +41,32 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-formItemsDesign(icon, item) {
+formItemsDesign(item) {
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: 7),
-    child: Card(child: ListTile(leading: Icon(icon), title: item)),
+    child: Card(child: ListTile(title: item)),
   );
 }
 
 Widget formUI() {
-  return Column(
-    children: <Widget>[
-      formItemsDesign(TextFormField(
-        controller: n1,
-        keyboardType: const TextInputType.numberWithOptions(decimal: true),
-        decoration: const InputDecoration(
-            border: OutlineInputBorder(), 
-            labelText: 'Ingrese un nuemero'),
-          validator:,
-      ),
-      formItemsDesign(
-        TextFormField(
-          controller: n2,
-          keyboardType: const TextInputType.numberWithOptions(decimal: true),
-          decoration: const InputDecoration(
-              border: OutlineInputBorder(), 
-              labelText: 'Ingrese un nuemero'),
-       validator:,
-        )
-      )
-    ]
-  );
+  return Column(children: <Widget>[
+    formItemsDesign(TextField(
+      controller: n1,
+      keyboardType: const TextInputType.numberWithOptions(decimal: true),
+      decoration: const InputDecoration(
+          border: OutlineInputBorder(), labelText: 'Primer Valor'),
+    )),
+    formItemsDesign(TextField(
+      controller: n2,
+      keyboardType: const TextInputType.numberWithOptions(decimal: true),
+      decoration: const InputDecoration(
+          border: OutlineInputBorder(), labelText: 'Segundo Valor'),
+    )),
+    formItemsDesign(TextField(
+      controller: total,
+      keyboardType: const TextInputType.numberWithOptions(decimal: true),
+      decoration: const InputDecoration(
+          border: OutlineInputBorder(), labelText: 'Total'),
+    )),
+  ]);
 }
